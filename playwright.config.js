@@ -5,10 +5,7 @@ const { devices } = require('@playwright/test'); // require devices
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
   use: {
-    // baseURL:
-    //   process.env.ENVIRONMENT === "qa02"
-    //     ? "https://www.qa02.illinois.camelot.global"
-    //     : "https://www.qa01.illinois.camelot.global",
+
     headless: false,
     // Take a screenshot of failed tests in /Users/gerasimoskalfountzos/PlaywrightFramework/test-results/
     screenshot: "only-on-failure",
