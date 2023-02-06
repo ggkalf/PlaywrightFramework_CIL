@@ -19,8 +19,10 @@ test('Log-in, add funds, withdraw funds, DBG purchase, navigate', async ({ page 
 
     //Go to login page
     await page.goto('/account/login');
-    await page.locator('#userName').fill('pocipkpbkpkfkhlfbldlkaglkmjlgkli@camelotglobal.com');
-    await page.locator('#password').fill('Aa12345678.');
+    // await page.locator('#userName').fill('pocipkpbkpkfkhlfbldlkaglkmjlgkli@camelotglobal.com');
+    // await page.locator('#password').fill('Aa12345678.');
+    await page.locator('#userName').fill('Rudolph_Cronin58@yahoo.com');
+    await page.locator('#password').fill('C@melot1');
     await page.locator('#login-button').click();
 
     // Verify player is Logged in

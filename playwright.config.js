@@ -5,7 +5,7 @@ const { devices } = require('@playwright/test'); // require devices
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
     use: {
-        baseURL: process.env.ENVIRONMENT === 'qa01' ? 'https://www.qa01.illinois.camelot.global' : 'https://www.qa02.illinois.camelot.global',
+        baseURL: process.env.ENVIRONMENT === 'qa02' ? 'https://www.qa02.illinois.camelot.global' : 'https://www.qa01.illinois.camelot.global',
         // baseURL: process.env.ENVIRONMENT = 'https://test04.illinoislottery.com/',
         // baseURL: process.env.ENVIRONMENT = 'https://www-sdc-load01.test.camelot.illinois/',
 
