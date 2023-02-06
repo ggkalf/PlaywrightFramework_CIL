@@ -1,7 +1,9 @@
 /*
 Dry run for verifying load01 environment status
 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1
+testEnv=qa01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1
 */
+import ENV from '../../utils/env';
 
 const { test, expect } = require('@playwright/test');
 
@@ -13,7 +15,7 @@ test('Log-in, add funds, withdraw funds, DBG purchase, navigate', async ({ page 
     test.setTimeout(300000)
 
     // Open homepage
-    await page.goto('/');
+    await page.goto(ENV.BASE_URL);
     const name = await page.innerText('#page-79ae7d0684 > div.header_conf.configuration.parbase > div > div > header > div > div.illi-header__content-wrapper.illi-header__content-logged-out > div.illi-header__account-info.user-account-info > a.illi-header__login.ill-btn.ill-btn-clear > span.user-account-info__login');
     expect(name).toBe('Log in');
 
