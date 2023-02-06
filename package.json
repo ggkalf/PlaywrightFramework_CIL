@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dryrun": "cross-env testEnv=qa01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1"
+    "dryrun": "cross-env testEnv=load01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1",
+    "dryrun:qa01": "cross-env testEnv=qa01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1",
+    "dryrun:qa02": "cross-env testEnv=qa02 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1",
+    "dryrun:qa03": "cross-env testEnv=qa03 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1"
   },
   "author": "",
   "license": "ISC",
