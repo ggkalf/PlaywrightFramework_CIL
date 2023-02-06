@@ -1,7 +1,6 @@
 {
   "name": "playwrightframework",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +8,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.26.1",
-    "playwright": "^1.26.1"
+    "@playwright/test": "^1.30.0",
+    "playwright": "^1.30.0"
   },
   "dependencies": {
-    "csv": "^6.2.0"
-  }
+    "csv": "^6.2.0",
+    "dotenv": "^16.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggkalf/PlaywrightFramework_CIL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ggkalf/PlaywrightFramework_CIL/issues"
+  },
+  "homepage": "https://github.com/ggkalf/PlaywrightFramework_CIL#readme",
+  "description": ""
 }
