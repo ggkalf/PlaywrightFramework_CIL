@@ -1,8 +1,5 @@
 /*
 Dry run for verifying load01 environment status
-testEnv=load01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1
-or
-npm run dryrun (the script can be located in package.json -> scripts) {}
 */
 import ENV from '../../utils/env';
 
