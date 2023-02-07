@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "exp": "cross-env testEnv=$npm_config_env npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun": "cross-env testEnv=load01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun:qa01": "cross-env testEnv=qa01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun:qa02": "cross-env testEnv=qa02 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
