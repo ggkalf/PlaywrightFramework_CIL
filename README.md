@@ -13,3 +13,7 @@ ii) npm run dryrun -- --project='chromium'
 iii) npm run dryrun -- --project='chromium' --project='safari'
 
 iv) npm run dryrun -- --project='chromium' --workers=1
+
+For debug
+
+npm run dryrun -- --debug
