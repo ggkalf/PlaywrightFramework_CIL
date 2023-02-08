@@ -10,7 +10,10 @@
     "dryrun:qa02": "cross-env testEnv=qa02 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun:qa03": "cross-env testEnv=qa03 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "iframeTest": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-rgs-fiesta-fever-iframe.spec.js --project=chromium",
-    "howtoplayTest": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=chromium --repeat-each=1"
+    "howtoplayTest:Chromium": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=chromium --repeat-each=2",
+    "howtoplayTest:firefox": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=firefox --repeat-each=2",
+    "howtoplayTest:safari": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=safari --repeat-each=2",
+    "howtoplayTest:mobile-safari": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project='mobile safari' --repeat-each=2"
   },
   "author": "",
   "license": "ISC",
