@@ -13,7 +13,8 @@
     "howtoplayTest:Chromium": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=chromium --repeat-each=2",
     "howtoplayTest:firefox": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=firefox --repeat-each=2",
     "howtoplayTest:safari": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=safari --repeat-each=2",
-    "howtoplayTest:mobile-safari": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project='mobile safari' --repeat-each=2"
+    "howtoplayTest:mobile-safari": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project='mobile safari' --repeat-each=2",
+    "purchaseTickets": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-purchase-fpg-tickets.spec.js --project='chromium' --repeat-each=1"
   },
   "author": "",
   "license": "ISC",
