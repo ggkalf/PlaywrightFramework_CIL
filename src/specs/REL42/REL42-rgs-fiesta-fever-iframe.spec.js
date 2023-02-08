@@ -54,6 +54,8 @@ test('Player purchases Fiesta Fever ticket, plays it and iframe animation is dis
   await page.locator('#purchase-form > div > button').click();
 
   // Ticket is displayed and playable
+  await expect(page.locator('#fpg-purchase-success-alert > div > span.global-messages__list.global-messages__list--success > ul > li')).toHaveText("You have successfully purchased your ticket. Play it now to see if you've won!")
+
   await expect(
     page.locator(
       '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div > button'
