@@ -72,5 +72,9 @@ test('Player purchases Fiesta Fever ticket, plays it and iframe animation is dis
   //Player is located to FPG Games Page
   await expect(page).toHaveURL(baseUrl + '/games/fpg/fiesta-fever/play');
 
-  //Pending iframe check
+  // Wait till game is loaded
+  const iframeBodyClass = await page.frameLocator('#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe')
+  .locator('.loaded');
+  await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
+
 });
