@@ -4,13 +4,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clearResults": "cross-env testEnv=int03 npx playwright test src/specs/clear_results.spec.js --project=chromium",
     "dryrun": "cross-env testEnv=load01 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun:qa01": "cross-env testEnv=qa01 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun:qa02": "cross-env testEnv=qa02 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "dryrun:qa03": "cross-env testEnv=qa03 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "iframeTest": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-rgs-fiesta-fever-iframe.spec.js --project=chromium",
     "howtoplayTest": "cross-env testEnv=int03 npx playwright test src/specs/REL42/REL42-fpg-navigate-to-how-to-play-page.spec.js --project=chromium --repeat-each=1"
-
   },
   "author": "",
   "license": "ISC",
