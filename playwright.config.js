@@ -6,7 +6,7 @@ const { devices } = require('@playwright/test'); // require devices
 const config = {
   use: {
 
-    headless: false,
+    headless: true,
     // Take a screenshot of failed tests in /Users/gerasimoskalfountzos/PlaywrightFramework/test-results/
     screenshot: "only-on-failure",
 
