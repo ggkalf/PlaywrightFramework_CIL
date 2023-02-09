@@ -1,11 +1,11 @@
-import ENV from '../../utils/env';
+import ENV from '../../../utils/env';
 
 const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
-test('Player playes a Big Number Knockout ticket and the iframe animation is displayed', async ({
+test('Player plays Fiesta Fever ticket and the iframe animation is displayed', async ({
   page,
 }) => {
   // Player goes to login Page and logs in
@@ -35,15 +35,15 @@ test('Player playes a Big Number Knockout ticket and the iframe animation is dis
     )
   ).toBeVisible;
 
-  // Player Clicks the play button for Big Number Knockout
+  // Player Clicks the play button for Fiesta Fever
   await page
     .locator(
-      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(3) > button > span.fpg-play-game-card__action-btn-label'
+      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(2) > button > span.fpg-play-game-card__action-btn-label'
     )
     .click();
 
   //Player is located to FPG Games Page
-  await expect(page).toHaveURL(baseUrl + '/games/fpg/big-number-knockout/play');
+  await expect(page).toHaveURL(baseUrl + '/games/fpg/fiesta-fever/play');
 
   // Wait till game is loaded
   const iframeBodyClass = await page.frameLocator('#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe')
