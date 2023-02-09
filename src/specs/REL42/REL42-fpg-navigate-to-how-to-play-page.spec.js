@@ -9,6 +9,8 @@ test('Player navigates into FPG How to Play page', async ({ page }) => {
 
     const fs = require('fs');
 
+    // performance.mark("start measuring");
+
     // Player goes to FPG How to Play Page
     await page.goto(baseUrl + '/games/fpg/hub/how-to-play');
 
@@ -17,6 +19,13 @@ test('Player navigates into FPG How to Play page', async ({ page }) => {
         content.accept();
     });
 
+    const iframeYoutubeLogo = await page.frameLocator('#player')
+    .locator('#movie_player > a > div > div.ytp-impression-link-logo');
+    await expect(iframeYoutubeLogo).toBeVisible();
+
+    // performance.mark("stop measuring");
+    // console.log(performance.measure("measurement", "start measuring", "stop measuring"));
+    
     //Measure page load time
     const navigationTimingJson = await page.evaluate(() =>
         JSON.stringify(performance.getEntriesByType('navigation'))
