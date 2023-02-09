@@ -9,16 +9,7 @@ test('Player playes a Big Number Knockout ticket and the iframe animation is dis
   page,
 }) => {
 
-  // Create CSV with Header
   const fs = require('fs');
-  fs.appendFile(
-    'bigNumberKnockout.csv',
-    'duration'.concat('\n'),
-    function (err) {
-      if (err) throw err;
-      console.log('File was created with Header.');
-    }
-  );
 
   // Player goes to login Page and logs in
   await page.goto(baseUrl + '/account/login');

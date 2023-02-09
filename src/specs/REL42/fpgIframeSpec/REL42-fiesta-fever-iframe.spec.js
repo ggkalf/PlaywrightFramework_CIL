@@ -8,12 +8,8 @@ test.describe.configure({ mode: 'parallel' });
 test('Player plays Fiesta Fever ticket and the iframe animation is displayed', async ({
   page,
 }) => {
-  // Create CSV with Header
+
   const fs = require('fs');
-  fs.appendFile('fiestaFever.csv', 'duration'.concat('\n'), function (err) {
-    if (err) throw err;
-    console.log('File was created with Header');
-  });
 
   // Player goes to login Page and logs in
   await page.goto(baseUrl + '/account/login');
