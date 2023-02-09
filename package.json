@@ -7,11 +7,11 @@
     "clearResults": "cross-env testEnv=int03 npx playwright test src/specs/clear_results.spec.js --project=chromium",
     "dryrun": "cross-env testEnv=load01 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
     "howtoplay": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgNavSpec/REL42-fpg-navigate-to-how-to-play-page.spec.js --repeat-each=20",
-    "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=1",
-    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=1",
-    "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=1",
-    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/clearIframeCSV.spec.js --project=chromium --repeat-each=1",
-    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec --project=chromium --repeat-each=1"
+    "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=20",
+    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
+    "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
+    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec --project=chromium --repeat-each=20",
+    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/clearIframeCSV.spec.js --project=chromium"
   },
   "author": "",
   "license": "ISC",
