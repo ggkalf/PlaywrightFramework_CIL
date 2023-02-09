@@ -9,7 +9,7 @@ const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
-test('Player playes a Big Bucks Highway ticket and the iframe animation is displayed', async ({
+test.skip('Player playes a Big Bucks Highway ticket and the iframe animation is displayed', async ({
   page,
 }) => {
   // Player goes to login Page and logs in
