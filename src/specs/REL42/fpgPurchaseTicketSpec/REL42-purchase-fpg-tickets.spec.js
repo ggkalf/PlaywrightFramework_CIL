@@ -1,4 +1,4 @@
-import ENV from '../../utils/env';
+import ENV from '../../../utils/env';
 
 const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
