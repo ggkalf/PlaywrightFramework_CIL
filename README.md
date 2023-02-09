@@ -17,3 +17,16 @@ iv) npm run dryrun -- --project='chromium' --workers=1
 For debug
 
 npm run dryrun -- --debug
+
+
+## For the Iframe Testing
+
+npm run fiesta -- --project=chromium --repeat-each=1
+
+npm run pbb -- --project=chromium --repeat-each=1
+
+npm run bnk -- --project=chromium --repeat-each=1
+
+npm run iframeSpec — —project=chromium --repeat-each=1
+
+npm run clearIframeCSV

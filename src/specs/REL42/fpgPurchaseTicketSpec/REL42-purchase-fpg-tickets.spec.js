@@ -1,11 +1,11 @@
-import ENV from '../../utils/env';
+import ENV from '../../../utils/env';
 
 const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
-test('Player purchases Fiesta Fever ticket, plays it and iframe animation is displayed', async ({
+test('Player purchases 1 Intralot game ticket and 3 rgs game tickets', async ({
   page,
 }) => {
   // Player goes to login Page and logs in
@@ -31,7 +31,25 @@ test('Player purchases Fiesta Fever ticket, plays it and iframe animation is dis
   //Player adds one Fiesta Fever ticket
   await page
     .locator(
+      '#piggy-bank-bucks > div.fpg-game-ticket-card__controls > div > button.exc-btn.exc-btn-fill--default.range-selector__controls-btn.range-selector__controls-btn--increment > span'
+    )
+    .click();
+
+  await page
+    .locator(
       '#fiesta-fever > div.fpg-game-ticket-card__controls > div > button.exc-btn.exc-btn-fill--default.range-selector__controls-btn.range-selector__controls-btn--increment > span'
+    )
+    .click();
+
+  await page
+    .locator(
+      '#big-bucks-highway > div.fpg-game-ticket-card__controls > div > button.exc-btn.exc-btn-fill--default.range-selector__controls-btn.range-selector__controls-btn--increment > span'
+    )
+    .click();
+
+  await page
+    .locator(
+      '#big-number-knockout > div.fpg-game-ticket-card__controls > div > button.exc-btn.exc-btn-fill--default.range-selector__controls-btn.range-selector__controls-btn--increment > span'
     )
     .click();
 
@@ -54,27 +72,17 @@ test('Player purchases Fiesta Fever ticket, plays it and iframe animation is dis
   await page.locator('#purchase-form > div > button').click();
 
   // Ticket is displayed and playable
-  await expect(page.locator('#fpg-purchase-success-alert > div > span.global-messages__list.global-messages__list--success > ul > li')).toHaveText("You have successfully purchased your ticket. Play it now to see if you've won!")
+  await expect(
+    page.locator(
+      '#fpg-purchase-success-alert > div > span.global-messages__list.global-messages__list--success > ul > li'
+    )
+  ).toHaveText(
+    "You have successfully purchased your tickets. Play them now to see if you've won!"
+  );
 
   await expect(
     page.locator(
       '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div > button'
     )
   ).toBeVisible;
-
-  // Player Clicks the play button
-  await page
-    .locator(
-      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div > button'
-    )
-    .click();
-
-  //Player is located to FPG Games Page
-  await expect(page).toHaveURL(baseUrl + '/games/fpg/fiesta-fever/play');
-
-  // Wait till game is loaded
-  const iframeBodyClass = await page.frameLocator('#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe')
-  .locator('.loaded');
-  await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
-
 });
