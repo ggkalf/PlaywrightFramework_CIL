@@ -27,6 +27,6 @@ npm run pbb -- --project=chromium --repeat-each=1
 
 npm run bnk -- --project=chromium --repeat-each=1
 
-npm run iframeSpec — —project=chromium --repeat-each=1
+npm run iframeSpec -- --project=chromium --repeat-each=1
 
 npm run clearIframeCSV
