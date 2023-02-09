@@ -8,6 +8,13 @@ test.describe.configure({ mode: 'parallel' });
 test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displayed', async ({
   page,
 }) => {
+  // Create CSV with Header
+  const fs = require('fs');
+  fs.appendFile('piggyBankBucks.csv', 'duration'.concat('\n'), function (err) {
+    if (err) throw err;
+    console.log('File was created with Header');
+  });
+
   // Player goes to login Page and logs in
   await page.goto(baseUrl + '/account/login');
   await page.locator('#userName').fill('natalia.giannouli@camelotls.com');
@@ -43,14 +50,28 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
     .click();
 
   //Player is located to FPG Games Page
-  await expect(page).toHaveURL(
-    baseUrl +
-      '/games/fpg/piggy-bank-bucks/play'
+  await expect(page).toHaveURL(baseUrl + '/games/fpg/piggy-bank-bucks/play');
+
+  // Measure page load time
+  const navigationTimingJson = await page.evaluate(() =>
+    JSON.stringify(performance.getEntriesByType('navigation'))
   );
 
+  const navigationTiming = JSON.parse(navigationTimingJson);
+  // console.log(navigationTiming);
+
   // Wait till game is loaded
-  const iframeBodyClass = await page.frameLocator('#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe')
-  .locator('.loaded');
+  const iframeBodyClass = await page
+    .frameLocator(
+      '#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe'
+    )
+    .locator('.loaded');
   await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 
+  const results = [navigationTiming[0]['duration']].join(',');
+
+  fs.appendFile('piggyBankBucks.csv', results.concat('\n'), function (err) {
+    if (err) throw err;
+    console.log('File was saved.');
+  });
 });
