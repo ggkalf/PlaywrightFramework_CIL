@@ -11,7 +11,7 @@
     "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
     "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
     "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec --repeat-each=20",
-    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/clearIframeCSV.spec.js --project=chromium"
+    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/cleanup/clearIframeCSV.spec.js --project=chromium"
   },
   "author": "",
   "license": "ISC",
