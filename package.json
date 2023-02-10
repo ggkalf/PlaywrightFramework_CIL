@@ -4,14 +4,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clearResults": "cross-env testEnv=int03 npx playwright test src/specs/cleanup/clear_results.spec.js --project=chromium",
-    "dryrun": "cross-env testEnv=load01 npx playwright test src/specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js",
-    "howtoplay": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgNavSpec/REL42-fpg-navigate-to-how-to-play-page.spec.js --repeat-each=20",
-    "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=20",
-    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
-    "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
-    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/fpgIframeSpec --repeat-each=20",
-    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/cleanup/clearIframeCSV.spec.js --project=chromium"
+    "clearResults": "cross-env testEnv=int03 npx playwright test src/specs/Cleanup/clear_results.spec.js --project=chromium",
+    "dryrun": "cross-env testEnv=load01 npx playwright test src/specs/Load01DryRun/Load01-dry-run.spec.js",
+    "howtoplay": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgNavSpec/REL42-fpg-navigate-to-how-to-play-page.spec.js --repeat-each=20",
+    "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=20",
+    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
+    "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
+    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec --repeat-each=20",
+    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/Cleanup/clearIframeCSV.spec.js --project=chromium"
   },
   "author": "",
   "license": "ISC",
