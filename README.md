@@ -19,6 +19,12 @@ For debug
 npm run dryrun -- --debug
 
 
+## Local Execution
+
+In order to see the Tests execution in the browser
+
+at playwright.config.js  set headless: false
+
 ## For the Iframe Testing
 
 npm run fiesta -- --project=chromium --repeat-each=1

@@ -11,10 +11,7 @@ WORKDIR /cil-playwright
 ENV PATH /cil-playwright/node_modules/.bin:$PATH
 
 # COPY the needed files to the app folder in Docker image
-# COPY package.json /app/
-# COPY tests/ /app/tests/
-# COPY tsconfig.json /app/
-# COPY config.toml /app/
+# COPY package.json /cil-playwright/
 
 COPY . /cil-playwright
 
