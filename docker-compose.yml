@@ -2,6 +2,6 @@ services:
   app:
     build: .
     container_name: cil-playwright-container
-    command: run -d -it --memory="4g" --cpus="2" --rm --ipc=host
+    tty: true
     volumes:
       - .:/cil-playwright
