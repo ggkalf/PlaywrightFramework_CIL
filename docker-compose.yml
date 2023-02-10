@@ -1,7 +1,9 @@
 services:
-  app:
+  cil-playwright:
     build: .
     container_name: cil-playwright-container
     tty: true
     volumes:
       - .:/cil-playwright
+    # # Overrides default command so things don't shut down after the process ends.
+    # command: /bin/sh -c "while sleep 1000; do :; done"
