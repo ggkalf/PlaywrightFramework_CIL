@@ -1,5 +1,9 @@
 # PlaywrightFramework_CIL
 
+## To push/pull throught the container
+
+Run this at your local terminal: ssh-add $HOME/.ssh/id_rsa
+
 ## How to use Load01 Dryrun
 
 testEnv=load01 npx playwright test specs/LOAD01_DRY_RUN/Load01-dry-run.spec.js --project='chromium' --workers=1
@@ -23,7 +27,7 @@ npm run dryrun -- --debug
 
 In order to see the Tests execution in the browser
 
-at playwright.config.js  set headless: false
+at playwright.config.js set headless: false
 
 ## For the Iframe Testing
 
