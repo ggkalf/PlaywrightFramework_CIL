@@ -5,18 +5,19 @@ FROM node:16
 FROM mcr.microsoft.com/playwright:focal
  
 # Set the work directory for the application
-WORKDIR /cil-playwright 
+WORKDIR /cil-playwright
 
 # Set the environment path to node_modules/.bin
 ENV PATH /cil-playwright/node_modules/.bin:$PATH
 
-# COPY the needed files to the app folder in Docker image
-# COPY package.json /cil-playwright/
-
-COPY . /cil-playwright
-
-# Get the needed libraries to run Playwright
-RUN apt-get update && apt-get -y install libnss3 libatk-bridge2.0-0 libdrm-dev libxkbcommon-dev libgbm-dev libasound-dev libatspi2.0-0 libxshmfence-dev
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install the dependencies in Node environment
 RUN npm install
+
+# COPY the needed files to the app folder in Docker image
+COPY . ./
+
+# Get the needed libraries to run Playwright
+RUN apt-get update && apt-get -y install libnss3 libatk-bridge2.0-0 libdrm-dev libxkbcommon-dev libgbm-dev libasound-dev libatspi2.0-0 libxshmfence-dev
