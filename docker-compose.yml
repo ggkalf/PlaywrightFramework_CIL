@@ -8,5 +8,8 @@ services:
             limits:
               cpus: '2'
               memory: 4g
+            reservations:
+              cpus: '2'
+              memory: 4g
     volumes:
       - .:/cil-playwright
