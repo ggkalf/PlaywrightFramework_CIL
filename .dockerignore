@@ -1,0 +1,7 @@
+**/node_modules/
+**/previousReleaseFiles/
+*/PreviousReleases/
+**/test-results/
+README.md
+.DS_store
+**.csv
