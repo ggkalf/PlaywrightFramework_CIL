@@ -1,9 +1,4 @@
 node_modules/
 test-results/
 .DS_store
-results_duration.csv
-results_element.csv
-results_page.csv
-piggyBankBucks.csv
-bigNumberKnockout.csv
-FiestaFever.csv
+*.csv
