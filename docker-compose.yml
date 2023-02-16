@@ -3,5 +3,10 @@ services:
     build: .
     container_name: cil-playwright-container
     tty: true
+    deploy:
+        resources:
+            limits:
+              cpus: '2'
+              memory: 4g
     volumes:
       - .:/cil-playwright
