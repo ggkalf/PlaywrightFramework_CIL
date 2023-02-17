@@ -15,11 +15,13 @@ const createCSV = (name) => {
 
 const deleteCSV = async (dir, name = '*') => {
   try {
-    if (name == '*') {
+    if (name === '*') {
       const files = await fsPromises.readdir(dir);
       for (const file of files) {
-        await fsPromises.unlink(path.resolve(dir, file));
-        console.log(`${dir}/${file} has been removed succesfully`);
+        if (path.parse(file).ext === '.csv') {
+          await fsPromises.unlink(path.resolve(dir, file));
+          console.log(`${dir}/${file} has been removed succesfully`);
+        }
       }
     } else {
       await fsPromises.unlink(path.resolve(dir, name));
@@ -31,11 +33,9 @@ const deleteCSV = async (dir, name = '*') => {
 };
 
 const main = () => {
-  //   deleteCSV('CsvFiles/');
-  for (let i = 0; i < 4; i++) {
-    createCSV('test'.concat(i.toString()));
-  }
-  //   console.log(('hello').concat((10).toString()));
+  deleteCSV('CsvFiles/');
+  //   for (let i = 0; i < 4; i++) {
+  //     createCSV('test.csv'.concat(i.toString()));
 };
 
 main();
