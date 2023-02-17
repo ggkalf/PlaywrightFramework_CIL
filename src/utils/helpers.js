@@ -8,7 +8,9 @@ const createCSV = (name) => {
   const dir = 'CsvFiles/';
   const header = [['Test Scenario', 'Test Duration']];
 
-  csv.stringify(header, (e, o) => fs.writeFileSync(path, o));
+  csv.stringify(header, (e, o) =>
+    fs.writeFileSync(path.resolve(dir, name.concat('.csv')), o)
+  );
 };
 
 const deleteCSV = async (dir, name = '*') => {
@@ -29,7 +31,11 @@ const deleteCSV = async (dir, name = '*') => {
 };
 
 const main = () => {
-  deleteCSV('CsvFiles/');
+  //   deleteCSV('CsvFiles/');
+  for (let i = 0; i < 4; i++) {
+    createCSV('test'.concat(i.toString()));
+  }
+  //   console.log(('hello').concat((10).toString()));
 };
 
 main();
