@@ -1,9 +1,35 @@
-const data = [
-  [1, 2],
-  [3, 4],
-];
-
 const fs = require('fs');
+const fsPromises = require('fs/promises');
 const csv = require('csv-stringify');
+const path = require('path');
+// import path from path
 
-csv.stringify(data, (e, o) => fs.writeFileSync('my.csv', o));
+const createCSV = (name) => {
+  const dir = 'CsvFiles/';
+  const header = [['Test Scenario', 'Test Duration']];
+
+  csv.stringify(header, (e, o) => fs.writeFileSync(path, o));
+};
+
+const deleteCSV = async (dir, name = '*') => {
+  try {
+    if (name == '*') {
+      const files = await fsPromises.readdir(dir);
+      for (const file of files) {
+        await fsPromises.unlink(path.resolve(dir, file));
+        console.log(`${dir}/${file} has been removed succesfully`);
+      }
+    } else {
+      await fsPromises.unlink(path.resolve(dir, name));
+      console.log(`${dir}/${name} has been removed succesfully`);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const main = () => {
+  deleteCSV('CsvFiles/');
+};
+
+main();
