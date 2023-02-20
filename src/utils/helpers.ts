@@ -1,9 +1,9 @@
-const fs = require('fs');
-const fsPromises = require('fs/promises');
-const csv = require('csv-stringify');
-const path = require('path');
+import fs from 'fs';
+import fsPromises from 'fs/promises';
+import csv from 'csv-stringify';
+import path from 'path';
 
-const createCSV = (name) => {
+const createCSV = (name: string) => {
   const dir = 'CsvFiles/';
   const header = [['Test Scenario', 'Test Duration']];
 
@@ -12,7 +12,7 @@ const createCSV = (name) => {
   );
 };
 
-const deleteCSV = async (dir, name = '*') => {
+const deleteCSV = async (dir: string, name: string = '*') => {
   try {
     if (name === '*') {
       const files = await fsPromises.readdir(dir);
@@ -32,9 +32,9 @@ const deleteCSV = async (dir, name = '*') => {
 };
 
 const main = () => {
-  deleteCSV('CsvFiles/');
-  //   for (let i = 0; i < 4; i++) {
-  //     createCSV('test.csv'.concat(i.toString()));
+  // deleteCSV('CsvFiles/');
+  for (let i = 0; i < 4; i++) {
+    createCSV('test.csv'.concat(i.toString()));
+  }
 };
-
 main();
