@@ -32,9 +32,13 @@ const deleteCSV = async (dir: string, name: string = '*') => {
 };
 
 const main = () => {
-  // deleteCSV('CsvFiles/');
   for (let i = 0; i < 4; i++) {
     createCSV('test.csv'.concat(i.toString()));
   }
 };
+
+// const main = () => {
+//   deleteCSV('CsvFiles/');
+// };
+
 main();
