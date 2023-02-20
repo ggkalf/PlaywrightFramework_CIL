@@ -2,7 +2,6 @@ const fs = require('fs');
 const fsPromises = require('fs/promises');
 const csv = require('csv-stringify');
 const path = require('path');
-// import path from path
 
 const createCSV = (name) => {
   const dir = 'CsvFiles/';

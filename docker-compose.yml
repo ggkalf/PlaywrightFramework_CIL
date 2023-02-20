@@ -1,6 +1,7 @@
 services:
   cil-playwright:
     build: .
+    image: cil-playwright-image
     container_name: cil-playwright-container
     tty: true
     deploy:
