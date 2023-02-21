@@ -3,6 +3,12 @@ import fsPromises from 'fs/promises';
 import csv from 'csv-stringify';
 import path from 'path';
 
+const createCSVDirectory = async () => {
+  const csvDir = 'CsvFiles/';
+  await fs.promises.mkdir(csvDir, { recursive: true });
+  return csvDir;
+};
+
 export const createCSV = (name: string) => {
   const dir = 'CsvFiles/';
   const header = [['Browser', 'Test Scenario', 'Test Duration']];
@@ -31,14 +37,36 @@ export const deleteCSV = async (dir: string, name: string = '*') => {
   }
 };
 
-// const main = () => {
-//   for (let i = 0; i < 4; i++) {
-//     createCSV('test.csv'.concat(i.toString()));
-//   }
-// };
+export const generateAverageDurationCSV = async (
+  name: string,
+  browser: string,
+  testName: string,
+  duration: number
+) => {
+  createCSVDirectory();
+  const csvDir = await createCSVDirectory();
+  if (!fs.existsSync(`${csvDir}${name.concat('.csv')}`)) {
+    createCSV(name);
+  }
+
+  const metricsParameters = [browser, testName, duration].join();
+
+  console.log(`${csvDir}`);
+  console.log(metricsParameters);
+  console.log(`${csvDir}${name.concat('.csv')}`);
+
+  fs.appendFile(
+    `${csvDir}${name.concat('.csv')}`,
+    metricsParameters.concat('\n'),
+    function (err) {
+      if (err) throw err;
+      console.log('File was saved.');
+    }
+  );
+};
 
 // const main = () => {
-//   deleteCSV('CsvFiles/');
+//   generateAverageDurationCSV('tkigkg', 'chrome', 'TEST', 4838);
 // };
 
 // main();

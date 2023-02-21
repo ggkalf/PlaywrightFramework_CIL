@@ -69,6 +69,10 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
 
   const results = [navigationTiming[0]['duration']].join(',');
 
+  console.log('--------------------RESUTLS----------------------')
+  console.log(testInfo,results)
+  console.log('--------------------RESUTLS----------------------')
+
   fs.appendFile('CsvFiles/TEST.csv', results.concat('\n'), function (err) {
     if (err) throw err;
     console.log('File was saved.');
