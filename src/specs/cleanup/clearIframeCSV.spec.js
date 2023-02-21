@@ -1,6 +1,7 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
+import { generateAverageDurationCSV } from '../../utils/helpers';
 
-test('Delete result files', async ({ page }) => {
+test('Delete result files', async ({ page }, testInfo) => {
   const fs = require('fs');
 
   fs.unlink('bigNumberKnockout.csv', (err) => {
@@ -28,19 +29,15 @@ test('Delete result files', async ({ page }) => {
   });
 });
 
-test('Create result files', async ({ page }) => {
+test('Create result files', async ({ page }, testInfo) => {
   const fs = require('fs');
 
   // create results_page file
   var headers = 'duration';
-  fs.appendFile(
-    'bigNumberKnockout.csv',
-    headers.concat('\n'),
-    function (err) {
-      if (err) throw err;
-      console.log('New file was created.');
-    }
-  );
+  fs.appendFile('bigNumberKnockout.csv', headers.concat('\n'), function (err) {
+    if (err) throw err;
+    console.log('New file was created.');
+  });
 
   // create results_element file
   var headers = 'duration';

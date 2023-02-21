@@ -13,7 +13,8 @@ test('Clear result files', async ({ page }) => {
     }
   })
 
-  // delete results_element file
+  // delete results_element
+   file
   fs.unlink('results_element.csv', err => {
     if (err) {
       console.log('File does not exist.')

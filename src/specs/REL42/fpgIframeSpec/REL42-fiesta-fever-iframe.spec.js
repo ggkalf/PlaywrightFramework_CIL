@@ -1,4 +1,5 @@
 import ENV from '../../../utils/env';
+import { generateAverageDurationCSV } from '../../../utils/helpers';
 
 const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
@@ -8,7 +9,6 @@ test.describe.configure({ mode: 'parallel' });
 test('Player plays Fiesta Fever ticket and the iframe animation is displayed', async ({
   page,
 }) => {
-
   const fs = require('fs');
 
   // Player goes to login Page and logs in
@@ -64,11 +64,10 @@ test('Player plays Fiesta Fever ticket and the iframe animation is displayed', a
     .locator('.loaded');
   await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 
-  const results = [navigationTiming[0]['duration']].join(',');
-
-  fs.appendFile('fiestaFever.csv', results.concat('\n'), function (err) {
-    if (err) throw err;
-    console.log('File was saved.');
-  });
-  
+  generateAverageDurationCSV(
+    'fiestaFever',
+    testInfo.project.name,
+    testInfo.title,
+    [navigationTiming[0]['duration']].join(',')
+  );
 });

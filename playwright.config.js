@@ -1,53 +1,51 @@
 // @ts-check
-const { devices } = require('@playwright/test'); // require devices
-
+import { devices } from '@playwright/test'; // require devices
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
   use: {
-
     headless: true,
     // Take a screenshot of failed tests in /Users/gerasimoskalfountzos/PlaywrightFramework/test-results/
-    screenshot: "only-on-failure",
+    screenshot: 'only-on-failure',
 
-    timezoneId: "America/Chicago",
+    timezoneId: 'America/Chicago',
     geolocation: { longitude: -87.623177, latitude: 41.881832 },
-    permissions: ["geolocation"],
+    permissions: ['geolocation'],
     // viewport: { width: 600, height: 900 },
   },
   // https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/deviceDescriptorsSource.json
   projects: [
     {
-      name: "chromium",
+      name: 'chromium',
       use: {
-        ...devices["Desktop Chrome"],
+        ...devices['Desktop Chrome'],
         contextOptions: {
           ignoreHTTPSErrors: true,
         },
       },
     },
     {
-      name: "firefox",
+      name: 'firefox',
       use: {
-        ...devices["Desktop Firefox"],
+        ...devices['Desktop Firefox'],
         contextOptions: {
           ignoreHTTPSErrors: true,
         },
       },
     },
     {
-      name: "safari",
+      name: 'safari',
       use: {
-        ...devices["Desktop Safari"],
+        ...devices['Desktop Safari'],
         contextOptions: {
           ignoreHTTPSErrors: true,
         },
       },
     },
     {
-      name: "mobile safari",
+      name: 'mobile safari',
       use: {
-        ...devices["iPhone 12"],
+        ...devices['iPhone 12'],
         contextOptions: {
           ignoreHTTPSErrors: true,
         },
@@ -63,4 +61,4 @@ const config = {
   globalSetup: 'src/utils/globalSetup.ts',
 };
 
-module.exports = config;
+export default config;

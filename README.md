@@ -1,5 +1,15 @@
 # PlaywrightFramework_CIL
 
+## To reopen project inside the container
+
+click cmd + shift + p
+
+Choose "Dev Containers: Reopen in Container"
+
+If you make any changes in Dockerfile, or devcontainer.json 
+
+choose "Dev Containers: Rebuild and Reopen in Container" instead
+
 ## To push/pull throught the container
 
 Run this at your local terminal: ssh-add $HOME/.ssh/id_rsa

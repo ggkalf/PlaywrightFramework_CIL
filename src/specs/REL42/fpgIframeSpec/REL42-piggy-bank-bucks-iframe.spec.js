@@ -1,14 +1,14 @@
 import ENV from '../../../utils/env';
+import { test, expect } from '@playwright/test';
+import { generateAverageDurationCSV } from '../../../utils/helpers';
 
-const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
 test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displayed', async ({
   page,
-}) => {
-
+}, testInfo) => {
   const fs = require('fs');
 
   // Player goes to login Page and logs in
@@ -41,7 +41,7 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
   // Player Clicks the play button for Piggy Bank Bucks
   await page
     .locator(
-      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(4) > button'
+      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div > button'
     )
     .click();
 
@@ -64,10 +64,10 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
     .locator('.loaded');
   await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 
-  const results = [navigationTiming[0]['duration']].join(',');
-
-  fs.appendFile('piggyBankBucks.csv', results.concat('\n'), function (err) {
-    if (err) throw err;
-    console.log('File was saved.');
-  });
+  generateAverageDurationCSV(
+    'piggyBankBucks',
+    testInfo.project.name,
+    testInfo.title,
+    [navigationTiming[0]['duration']].join(',')
+  );
 });
