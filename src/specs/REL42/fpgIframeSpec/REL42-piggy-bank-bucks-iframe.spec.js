@@ -1,6 +1,6 @@
 import ENV from '../../../utils/env';
 import { test, expect } from '@playwright/test';
-import { createCSV, deleteCSV } from '../../../utils/helpers';
+import { generateAverageDurationCSV } from '../../../utils/helpers';
 
 const baseUrl = ENV.BASE_URL;
 
@@ -10,9 +10,6 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
   page,
 }, testInfo) => {
   const fs = require('fs');
-  // const createCSV = require('src/utils/helpers.ts');
-
-  createCSV('TEST');
 
   // Player goes to login Page and logs in
   await page.goto(baseUrl + '/account/login');
@@ -67,14 +64,10 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
     .locator('.loaded');
   await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 
-  const results = [navigationTiming[0]['duration']].join(',');
-
-  console.log('--------------------RESUTLS----------------------')
-  console.log(testInfo,results)
-  console.log('--------------------RESUTLS----------------------')
-
-  fs.appendFile('CsvFiles/TEST.csv', results.concat('\n'), function (err) {
-    if (err) throw err;
-    console.log('File was saved.');
-  });
+  generateAverageDurationCSV(
+    'piggyBankBucks',
+    testInfo.project.name,
+    testInfo.title,
+    [navigationTiming[0]['duration']].join(',')
+  );
 });

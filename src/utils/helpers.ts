@@ -64,9 +64,3 @@ export const generateAverageDurationCSV = async (
     }
   );
 };
-
-// const main = () => {
-//   generateAverageDurationCSV('tkigkg', 'chrome', 'TEST', 4838);
-// };
-
-// main();

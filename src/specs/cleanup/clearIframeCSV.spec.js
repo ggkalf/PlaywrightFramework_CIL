@@ -52,11 +52,4 @@ test('Create result files', async ({ page }, testInfo) => {
     if (err) throw err;
     console.log('New file was created.');
   });
-
-  generateAverageDurationCSV(
-    'testResult',
-    testInfo.project.name,
-    testInfo.title,
-    4838
-  );
 });
