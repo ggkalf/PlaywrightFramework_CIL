@@ -8,7 +8,7 @@
     "dryrun": "cross-env testEnv=load01 npx playwright test src/specs/Load01DryRun/Load01-dry-run.spec.js",
     "howtoplay": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgNavSpec/REL42-fpg-navigate-to-how-to-play-page.spec.js --repeat-each=20",
     "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=20",
-    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
+    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --project=chromium --repeat-each=1",
     "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
     "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec --repeat-each=20",
     "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/Cleanup/clearIframeCSV.spec.js --project=chromium",

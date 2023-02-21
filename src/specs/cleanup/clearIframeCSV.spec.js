@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('Delete result files', async ({ page }) => {
+test('Delete result files', async ({ page }, testInfo) => {
   const fs = require('fs');
 
   fs.unlink('bigNumberKnockout.csv', (err) => {

@@ -3,16 +3,16 @@ import fsPromises from 'fs/promises';
 import csv from 'csv-stringify';
 import path from 'path';
 
-const createCSV = (name: string) => {
+export const createCSV = (name: string) => {
   const dir = 'CsvFiles/';
-  const header = [['Test Scenario', 'Test Duration']];
+  const header = [['Browser', 'Test Scenario', 'Test Duration']];
 
   csv.stringify(header, (e, o) =>
     fs.writeFileSync(path.resolve(dir, name.concat('.csv')), o)
   );
 };
 
-const deleteCSV = async (dir: string, name: string = '*') => {
+export const deleteCSV = async (dir: string, name: string = '*') => {
   try {
     if (name === '*') {
       const files = await fsPromises.readdir(dir);
@@ -31,14 +31,14 @@ const deleteCSV = async (dir: string, name: string = '*') => {
   }
 };
 
-const main = () => {
-  for (let i = 0; i < 4; i++) {
-    createCSV('test.csv'.concat(i.toString()));
-  }
-};
+// const main = () => {
+//   for (let i = 0; i < 4; i++) {
+//     createCSV('test.csv'.concat(i.toString()));
+//   }
+// };
 
 // const main = () => {
 //   deleteCSV('CsvFiles/');
 // };
 
-main();
+// main();
