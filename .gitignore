@@ -2,4 +2,4 @@ node_modules/
 test-results/
 .DS_store
 *.csv
-PerformanceResults/
+/PerformanceResults
