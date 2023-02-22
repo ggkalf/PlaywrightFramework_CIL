@@ -1,6 +1,7 @@
 **/node_modules/
 **/previousReleaseFiles/
 **/PreviousReleases/
+**/PerformanceResults
 **/test-results/
 **/.DS_store
 **.csv

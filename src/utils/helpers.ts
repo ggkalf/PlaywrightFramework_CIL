@@ -3,14 +3,14 @@ import fsPromises from 'fs/promises';
 import csv from 'csv-stringify';
 import path from 'path';
 
-const createCSVDirectory = async () => {
-  const csvDir = 'CsvFiles/';
-  await fs.promises.mkdir(csvDir, { recursive: true });
-  return csvDir;
+const createperformanceResultsDirectory = async () => {
+  const performanceResultsDir = './Files/PerformanceResults/';
+  await fs.promises.mkdir(performanceResultsDir, { recursive: true });
+  return performanceResultsDir;
 };
 
 export const createCSV = (name: string) => {
-  const dir = 'CsvFiles/';
+  const dir = './Files/PerformanceResults/';
   const header = [['Browser', 'Test Scenario', 'Test Duration']];
 
   csv.stringify(header, (e, o) =>
@@ -43,20 +43,20 @@ export const generateAverageDurationCSV = async (
   testName: string,
   duration: number
 ) => {
-  createCSVDirectory();
-  const csvDir = await createCSVDirectory();
-  if (!fs.existsSync(`${csvDir}${name.concat('.csv')}`)) {
+  createperformanceResultsDirectory();
+  const performanceResultsDir = await createperformanceResultsDirectory();
+  if (!fs.existsSync(`${performanceResultsDir}${name.concat('.csv')}`)) {
     createCSV(name);
   }
 
   const metricsParameters = [browser, testName, duration].join();
 
-  console.log(`${csvDir}`);
+  console.log(`${performanceResultsDir}`);
   console.log(metricsParameters);
-  console.log(`${csvDir}${name.concat('.csv')}`);
+  console.log(`${performanceResultsDir}${name.concat('.csv')}`);
 
   fs.appendFile(
-    `${csvDir}${name.concat('.csv')}`,
+    `${performanceResultsDir}${name.concat('.csv')}`,
     metricsParameters.concat('\n'),
     function (err) {
       if (err) throw err;

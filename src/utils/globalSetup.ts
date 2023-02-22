@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 async function globalSetup(config: FullConfig) {
   if (process.env.testEnv) {
     dotenv.config({
-      path: `./environmentFiles/.env.${process.env.testEnv}`,
+      path: `./Files/environmentFiles/.env.${process.env.testEnv}`,
       override: true,
     });
   }
