@@ -10,9 +10,7 @@
     "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=20",
     "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
     "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
-    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec --repeat-each=20",
-    "clearIframeCSV": "cross-env testEnv=int03 npx playwright test src/specs/Cleanup/clearIframeCSV.spec.js --project=chromium",
-    "helpers": "ts-node src/utils/helpers.ts"
+    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec --repeat-each=20"
   },
   "author": "",
   "license": "ISC",
