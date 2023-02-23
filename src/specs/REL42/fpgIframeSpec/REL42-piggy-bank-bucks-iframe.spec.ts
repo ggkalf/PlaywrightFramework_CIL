@@ -1,14 +1,14 @@
 import ENV from '../../../utils/env';
+import { test, expect } from '@playwright/test';
 import { generateAverageDurationCSV } from '../../../utils/helpers';
 
-const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
-test('Player playes a Big Number Knockout ticket and the iframe animation is displayed', async ({
+test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displayed', async ({
   page,
-}) => {
+}, testInfo) => {
   const fs = require('fs');
 
   // Player goes to login Page and logs in
@@ -38,15 +38,15 @@ test('Player playes a Big Number Knockout ticket and the iframe animation is dis
     )
   ).toBeVisible;
 
-  // Player Clicks the play button for Big Number Knockout
+  // Player Clicks the play button for Piggy Bank Bucks
   await page
     .locator(
-      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(3) > button > span.fpg-play-game-card__action-btn-label'
+      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div > button'
     )
     .click();
 
   //Player is located to FPG Games Page
-  await expect(page).toHaveURL(baseUrl + '/games/fpg/big-number-knockout/play');
+  await expect(page).toHaveURL(baseUrl + '/games/fpg/piggy-bank-bucks/play');
 
   // Measure page load time
   const navigationTimingJson = await page.evaluate(() =>
@@ -54,7 +54,6 @@ test('Player playes a Big Number Knockout ticket and the iframe animation is dis
   );
 
   const navigationTiming = JSON.parse(navigationTimingJson);
-  // console.log(navigationTiming);
 
   // Wait till game is loaded
   const iframeBodyClass = await page
@@ -64,10 +63,11 @@ test('Player playes a Big Number Knockout ticket and the iframe animation is dis
     .locator('.loaded');
   await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 
+  let duration: number = +[navigationTiming[0]['duration']].join(',');
   generateAverageDurationCSV(
-    'bigNumberKnockout',
+    'piggyBankBucks',
     testInfo.project.name,
     testInfo.title,
-    [navigationTiming[0]['duration']].join(',')
+    duration
   );
 });

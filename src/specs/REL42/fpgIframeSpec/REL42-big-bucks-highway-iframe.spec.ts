@@ -1,16 +1,17 @@
-import ENV from '../../../utils/env';
-import { test, expect } from '@playwright/test';
-import { generateAverageDurationCSV } from '../../../utils/helpers';
+// The .loaded class is not present int Big Bucks Highway game,
+// thus we are unable to test the iframe game load time.
+// Pending feedback from the games team
 
+import ENV from '../../../utils/env';
+
+const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
-test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displayed', async ({
+test.skip('Player playes a Big Bucks Highway ticket and the iframe animation is displayed', async ({
   page,
 }, testInfo) => {
-  const fs = require('fs');
-
   // Player goes to login Page and logs in
   await page.goto(baseUrl + '/account/login');
   await page.locator('#userName').fill('natalia.giannouli@camelotls.com');
@@ -38,36 +39,25 @@ test('Player playes a Piggy Bank Bucks ticket and the iframe animation is displa
     )
   ).toBeVisible;
 
-  // Player Clicks the play button for Piggy Bank Bucks
+  // Player Clicks the play button for Big Bucks Highway
   await page
     .locator(
-      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div > button'
+      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(1) > button'
     )
     .click();
 
   //Player is located to FPG Games Page
-  await expect(page).toHaveURL(baseUrl + '/games/fpg/piggy-bank-bucks/play');
-
-  // Measure page load time
-  const navigationTimingJson = await page.evaluate(() =>
-    JSON.stringify(performance.getEntriesByType('navigation'))
+  await expect(page).toHaveURL(
+    baseUrl +
+      '/games/fpg/big-bucks-highway/play'
   );
 
-  const navigationTiming = JSON.parse(navigationTimingJson);
-  // console.log(navigationTiming);
-
-  // Wait till game is loaded
-  const iframeBodyClass = await page
-    .frameLocator(
-      '#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe'
-    )
-    .locator('.loaded');
-  await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
-
-  generateAverageDurationCSV(
-    'piggyBankBucks',
-    testInfo.project.name,
-    testInfo.title,
-    [navigationTiming[0]['duration']].join(',')
-  );
+  // //DOESN'T WORK READ COMMENT AT THE START OF THE PAGE
+  // // Wait till game is loaded
+  // const iframeBodyClass = await page
+  //   .frameLocator(
+  //     '#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe'
+  //   )
+  //   .locator('.loaded');
+  // await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 });
