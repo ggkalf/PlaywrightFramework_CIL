@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clearResults": "cross-env testEnv=int03 npx playwright test src/specs/Cleanup/clear_results.spec.js --project=chromium",
-    "dryrun": "cross-env testEnv=load01 npx playwright test src/specs/Load01DryRun/Load01-dry-run.spec.js",
-    "howtoplay": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgNavSpec/REL42-fpg-navigate-to-how-to-play-page.spec.js --repeat-each=20",
-    "fiesta": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-fiesta-fever-iframe.spec.js --repeat-each=20",
-    "pbb": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-piggy-bank-bucks-iframe.spec.js --repeat-each=20",
-    "bnk": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec/REL42-big-number-knockout-iframe.spec.js --repeat-each=20",
-    "iframeSpec": "cross-env testEnv=int03 npx playwright test src/specs/REL42/FpgIframeSpec --repeat-each=20"
+    "clearResults": "cross-env testEnv=int03 npx playwright test clear_results.spec.ts --project=chromium",
+    "dryrun": "cross-env testEnv=load01 npx playwright test Load01-dry-run.spec.ts",
+    "howtoplay": "cross-env testEnv=int03 npx playwright test REL42-fpg-navigate-to-how-to-play-page.spec.ts --repeat-each=20",
+    "fiesta": "cross-env testEnv=int03 npx playwright test REL42-fiesta-fever-iframe.spec.ts --repeat-each=20",
+    "pbb": "cross-env testEnv=int03 npx playwright test REL42-piggy-bank-bucks-iframe.spec.ts --repeat-each=20",
+    "bnk": "cross-env testEnv=int03 npx playwright test REL42-big-number-knockout-iframe.spec.ts --repeat-each=20",
+    "iframeSpec": "cross-env testEnv=int03 npx playwright test REL42/FpgIframeSpec --repeat-each=20"
   },
   "author": "",
   "license": "ISC",
@@ -23,14 +22,5 @@
     "csv": "^6.2.0",
     "csv-stringify": "^6.2.4",
     "dotenv": "^16.0.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ggkalf/PlaywrightFramework_CIL.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ggkalf/PlaywrightFramework_CIL/issues"
-  },
-  "homepage": "https://github.com/ggkalf/PlaywrightFramework_CIL#readme",
-  "description": ""
+  }
 }

@@ -1,17 +1,16 @@
-// The .loaded class is not present int Big Bucks Highway game,
-// thus we are unable to test the iframe game load time.
-// Pending feedback from the games team
-
 import ENV from '../../../utils/env';
+import { generateAverageDurationCSV } from '../../../utils/helpers';
 
 const { test, expect } = require('@playwright/test');
 const baseUrl = ENV.BASE_URL;
 
 test.describe.configure({ mode: 'parallel' });
 
-test.skip('Player playes a Big Bucks Highway ticket and the iframe animation is displayed', async ({
+test('Player plays Fiesta Fever ticket and the iframe animation is displayed', async ({
   page,
-}) => {
+}, testInfo) => {
+  const fs = require('fs');
+
   // Player goes to login Page and logs in
   await page.goto(baseUrl + '/account/login');
   await page.locator('#userName').fill('natalia.giannouli@camelotls.com');
@@ -39,25 +38,37 @@ test.skip('Player playes a Big Bucks Highway ticket and the iframe animation is 
     )
   ).toBeVisible;
 
-  // Player Clicks the play button for Big Bucks Highway
+  // Player Clicks the play button for Fiesta Fever
   await page
     .locator(
-      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(1) > button'
+      '#il-web-app > div.exc-container.exc-container__body.exc-container--with-bottom-margin > div > section > div > section > div > section.fpg-game-play-hub__purchased-tickets > div > div > div:nth-child(2) > button > span.fpg-play-game-card__action-btn-label'
     )
     .click();
 
   //Player is located to FPG Games Page
-  await expect(page).toHaveURL(
-    baseUrl +
-      '/games/fpg/big-bucks-highway/play'
+  await expect(page).toHaveURL(baseUrl + '/games/fpg/fiesta-fever/play');
+
+  // Measure page load time
+  const navigationTimingJson = await page.evaluate(() =>
+    JSON.stringify(performance.getEntriesByType('navigation'))
   );
 
-  // //DOESN'T WORK READ COMMENT AT THE START OF THE PAGE
-  // // Wait till game is loaded
-  // const iframeBodyClass = await page
-  //   .frameLocator(
-  //     '#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe'
-  //   )
-  //   .locator('.loaded');
-  // await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
+  const navigationTiming = JSON.parse(navigationTimingJson);
+  // console.log(navigationTiming);
+
+  // Wait till game is loaded
+  const iframeBodyClass = await page
+    .frameLocator(
+      '#il-web-app > div:nth-child(1) > div:nth-child(1) > section > section > div.iframe-play__iframe-wrapper > iframe'
+    )
+    .locator('.loaded');
+  await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
+
+  let duration: number = +[navigationTiming[0]['duration']];
+  generateAverageDurationCSV(
+    'fiestaFever',
+    testInfo.project.name,
+    testInfo.title,
+    duration
+  );
 });

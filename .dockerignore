@@ -1,6 +1,7 @@
 **/node_modules/
+**/playwright/.cache/
 **/previousReleaseFiles/
 **/PreviousReleases/
-**/test-results/
+**/resultFiles
 **/.DS_store
 **.csv
