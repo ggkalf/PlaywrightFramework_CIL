@@ -23,7 +23,7 @@ const config: PlaywrightTestConfig = {
      */
     timeout: 5000,
   },
-  /* Run tests in files in parallel */
+  /* Run tests in ResultFiles in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -34,7 +34,13 @@ const config: PlaywrightTestConfig = {
   // Max number of worker processes, max is 10 in MAC
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: [['html', { open: 'never', outputFolder: './Files/playwrighTestReportHTML' }]],
+  // open: 'never' disable automatic popup html report in browser
+  // reporter: [
+  //   [
+  //     'html',
+  //     {outputFolder: './ResultFiles/playwrighTestReportHTML' },
+  //   ],
+  // ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   globalSetup: 'src/utils/globalSetup.ts',
@@ -89,7 +95,7 @@ const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: 'Files/testResultsSnapshots/',
+  outputDir: 'resultFiles/testResultsSnapshots/',
 
   /* Run your local dev server before starting the tests */
   // webServer: {

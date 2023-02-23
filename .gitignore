@@ -1,7 +1,5 @@
 node_modules/
-/testResultsSnapshots/
-/playwrighTestReportHTML/
 /playwright/.cache/
+resultFiles/
 .DS_store
 *.csv
-PerformanceResults/

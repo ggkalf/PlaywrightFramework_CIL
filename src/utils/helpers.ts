@@ -4,13 +4,13 @@ import csv from 'csv-stringify';
 import path from 'path';
 
 const createperformanceResultsDirectory = async () => {
-  const performanceResultsDir = './Files/PerformanceResults/';
+  const performanceResultsDir = './resultFiles/PerformanceResults/';
   await fs.promises.mkdir(performanceResultsDir, { recursive: true });
   return performanceResultsDir;
 };
 
 export const createCSV = (name: string) => {
-  const dir = './Files/PerformanceResults/';
+  const dir = './resultFiles/PerformanceResults/';
   const header = [['Browser', 'Test Scenario', 'Test Duration']];
 
   csv.stringify(header, (e, o) =>
