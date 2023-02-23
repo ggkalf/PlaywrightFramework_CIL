@@ -64,7 +64,7 @@ test('Player plays Fiesta Fever ticket and the iframe animation is displayed', a
     .locator('.loaded');
   await expect(iframeBodyClass).toBeVisible({ timeout: 300000, visible: true });
 
-  let duration: number = +[navigationTiming[0]['duration']].join(',');
+  let duration: number = +[navigationTiming[0]['duration']];
   generateAverageDurationCSV(
     'fiestaFever',
     testInfo.project.name,

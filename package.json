@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clearResults": "cross-env testEnv=int03 npx playwright test clear_results.spec.js --project=chromium",
-    "dryrun": "cross-env testEnv=load01 npx playwright test Load01-dry-run.spec.js",
-    "howtoplay": "cross-env testEnv=int03 npx playwright test REL42-fpg-navigate-to-how-to-play-page.spec.js --repeat-each=20",
+    "clearResults": "cross-env testEnv=int03 npx playwright test clear_results.spec.ts --project=chromium",
+    "dryrun": "cross-env testEnv=load01 npx playwright test Load01-dry-run.spec.ts",
+    "howtoplay": "cross-env testEnv=int03 npx playwright test REL42-fpg-navigate-to-how-to-play-page.spec.ts --repeat-each=20",
     "fiesta": "cross-env testEnv=int03 npx playwright test REL42-fiesta-fever-iframe.spec.ts --repeat-each=20",
     "pbb": "cross-env testEnv=int03 npx playwright test REL42-piggy-bank-bucks-iframe.spec.ts --repeat-each=20",
     "bnk": "cross-env testEnv=int03 npx playwright test REL42-big-number-knockout-iframe.spec.ts --repeat-each=20",
