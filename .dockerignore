@@ -1,10 +1,10 @@
 **/node_modules/
-**/test-results/
+**/testResultsSnapshots/
 **/playwright-report/
 **/playwright/.cache/
 **/previousReleaseFiles/
 **/PreviousReleases/
 **/PerformanceResults/
-**/playwright-report/
+**/playwrighTestReportHTML/
 **/.DS_store
 **.csv

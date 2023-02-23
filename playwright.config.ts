@@ -1,5 +1,6 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -33,13 +34,13 @@ const config: PlaywrightTestConfig = {
   // Max number of worker processes, max is 10 in MAC
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: 'html',
+  // reporter: [['html', { open: 'never', outputFolder: './Files/playwrighTestReportHTML' }]],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   globalSetup: 'src/utils/globalSetup.ts',
   use: {
     headless: true,
-    // Take a screenshot of failed tests in /Users/gerasimoskalfountzos/PlaywrightFramework/test-results/
+    // Take a screenshot of failed tests in /Users/[USER]/PlaywrightFramework/test-results/
     screenshot: 'only-on-failure',
 
     timezoneId: 'America/Chicago',
@@ -88,7 +89,7 @@ const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
+  outputDir: 'Files/testResultsSnapshots/',
 
   /* Run your local dev server before starting the tests */
   // webServer: {
