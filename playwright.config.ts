@@ -32,7 +32,8 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
 
   // Max number of worker processes, max is 10 in MAC
-  workers: process.env.CI ? 1 : undefined,
+  // workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // open: 'never' disable automatic popup html report in browser
   // reporter: [
