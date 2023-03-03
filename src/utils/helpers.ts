@@ -9,7 +9,7 @@ const createperformanceResultsDirectory = async () => {
   return performanceResultsDir;
 };
 
-export const createCSV = (name: string) => {
+export const createCSV = async (name: string) => {
   const dir = './resultFiles/PerformanceResults/';
   const header = [['Browser', 'Test Scenario', 'Test Duration']];
 
